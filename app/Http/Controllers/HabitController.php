@@ -10,7 +10,19 @@ use App\Models\Habit;
 
 class HabitController extends Controller
 {
-    public function index(StoreHabitRequest $request)
+    public function index()
+    {
+        return HabitResource::collection(
+            Habit::all()
+        );
+    }
+
+    public function show(Habit $habit)
+    {
+        return HabitResource::make($habit);
+    }
+
+    public function store(StoreHabitRequest $request)
     {
         $data = $request->validated();
 
