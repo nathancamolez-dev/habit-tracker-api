@@ -16,7 +16,7 @@ return new class () extends Migration
     {
         Schema::create('habit_logs', function (Blueprint $table): void {
             $table->id();
-            $table->uuid();
+            $table->string('uuid')->unique();
             $table->foreignIdFor(Habit::class)->constrained();
             $table->dateTime('completed_at');
             $table->timestamps();

@@ -16,7 +16,7 @@ return new class () extends Migration
     {
         Schema::create('habits', function (Blueprint $table): void {
             $table->id();
-            $table->uuid();
+            $table->string('uuid')->unique();
             $table->foreignIdfor(User::class)->constrained();
             $table->string('title');
             $table->timestamps();
