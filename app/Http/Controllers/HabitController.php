@@ -14,6 +14,10 @@ class HabitController extends Controller
 {
     public function index()
     {
+        request()->validate([
+            'with' => ['sometimes', 'string', 'regex:/\b(?:logs|user)(?:.*\b(?:logs|user))?/i'],
+        ]);
+
         return HabitResource::collection(
             Habit::query()
                 ->when(
@@ -36,7 +40,7 @@ class HabitController extends Controller
 
         $load = request()->string('with')
             ->explode(',')
-            ->filter(fn ($item) => strlen($item) > 0)
+            ->filter(fn ($item): bool => (string) $item !== '')
             ->toArray();
 
         return HabitResource::make($habit->load($load));
