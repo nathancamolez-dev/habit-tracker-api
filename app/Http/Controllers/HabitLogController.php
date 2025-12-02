@@ -30,7 +30,6 @@ class HabitLogController extends Controller
     {
         $log = $habit->logs()->updateOrCreate(
             ['completed_at' => $request->date('completed_at')],
-            ['habit_id' => $habit->id, 'completed_at' => $request->date('completed_at')]
         );
 
         return HabitLogResource::make($log);
