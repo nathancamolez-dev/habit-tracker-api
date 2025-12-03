@@ -1,7 +1,7 @@
 <x-mail::message>
-# Introduction
+# Weekly Report
 
-The body of your message.
+The weekly report of the completed and uncompleted habits.
 
 <x-mail::button :url="''">
 Button Text
