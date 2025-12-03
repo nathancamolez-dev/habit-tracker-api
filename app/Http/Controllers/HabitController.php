@@ -51,7 +51,7 @@ class HabitController extends Controller implements HasMiddleware
 
         $load = request()->string('with')
             ->explode(',')
-            ->filter(fn ($item): bool => (string) $item !== '')
+            ->filter(fn ($item): bool => $item !== '')
             ->toArray();
 
         return HabitResource::make($habit->load($load));

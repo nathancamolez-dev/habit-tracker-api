@@ -9,7 +9,7 @@ use App\Models\User;
 
 class HabitPolicy
 {
-    public function own(User $user, Habit $habit)
+    public function own(User $user, Habit $habit): bool
     {
         return $user->id === $habit->user_id;
     }

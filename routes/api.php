@@ -6,11 +6,9 @@ use App\Http\Controllers\HabitController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/user', fn (Request $request) => $request->user())->middleware('auth:sanctum');
 
-Route::name('api.')->middleware('auth:sanctum')->group(function () {
+Route::name('api.')->middleware('auth:sanctum')->group(function (): void {
     Route::apiResource('habits', HabitController::class)
         ->scoped(['habit' => 'uuid']);
 
