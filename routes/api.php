@@ -11,7 +11,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::name('api.')->middleware('auth:sanctum')->group(function () {
-    Route::apiResource('habits', HabitController::class)->scoped(['habit' => 'uuid']);
+    Route::apiResource('habits', HabitController::class)
+        ->scoped(['habit' => 'uuid']);
 
     Route::apiResource('habits.logs', HabitController::class)
         ->only(['index', 'store', 'destroy'])
